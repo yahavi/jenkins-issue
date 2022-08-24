@@ -1,20 +1,5 @@
 include "shared", "api", "services:webservice"
 
-pluginManagement {
-    resolutionStrategy {
-    }
-    repositories {
-        maven {
-            credentials {
-                username System.getenv('ARTIFACTORY_USR')
-                password System.getenv('ARTIFACTORY_PSW')
-            }
-            url System.getenv('ARTIFACTORY_URL')
-            allowInsecureProtocol = true
-        }
-    }
-}
-
 dependencyResolutionManagement {
     repositories {
         maven {
