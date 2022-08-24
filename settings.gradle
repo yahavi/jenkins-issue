@@ -1,0 +1,13 @@
+include "shared", "api", "services:webservice"
+
+dependencyResolutionManagement {
+    repositories {
+        maven {
+            credentials {
+                username System.getenv('ARTIFACTORY_USR')
+                password System.getenv('ARTIFACTORY_PSW')
+            }
+            url System.getenv('ARTIFACTORY_URL')
+        }
+    }
+}
