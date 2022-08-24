@@ -11,7 +11,7 @@ pipeline {
         stage ('Artifactory configuration') {
             steps {
                 rtGradleDeployer (
-                    id: "GRADLE_DEPLOYER1",
+                    id: "GRADLE_DEPLOYER",
                     serverId: "ECOSYS",
                     repo: "libs-release-local"
                 )
