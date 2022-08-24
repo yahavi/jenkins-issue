@@ -7,7 +7,7 @@ dependencyResolutionManagement {
                 username System.getenv('ARTIFACTORY_USR')
                 password System.getenv('ARTIFACTORY_PSW')
             }
-            url System.getenv('ARTIFACTORY_URL')
+            url "http://127.0.0.1:8081/artifactory/libs-release"
         }
     }
 }
