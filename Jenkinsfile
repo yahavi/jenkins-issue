@@ -12,13 +12,13 @@ pipeline {
             steps {
                 rtGradleDeployer (
                     id: "GRADLE_DEPLOYER",
-                    serverId: "ECOSYS",
+                    serverId: "loren-7x",
                     repo: "libs-release-local"
                 )
 
                 rtGradleResolver (
                     id: "GRADLE_RESOLVER",
-                    serverId: "ECOSYS",
+                    serverId: "loren-7x",
                     repo: "libs-release"
                 )
             }
