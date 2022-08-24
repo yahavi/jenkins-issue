@@ -23,3 +23,18 @@ allprojects {
   status = 'integration'
 }
 
+catalog {
+    versionCatalog {
+        from(files('libs.versions.toml'))
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.versionCatalog
+        }
+    }
+}
+
+artifactoryPublish { publications(publishing.publications.maven) }
