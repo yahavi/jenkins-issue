@@ -23,6 +23,12 @@ allprojects {
   status = 'integration'
 }
 
+plugins {
+    id 'version-catalog'
+    id 'maven-publish'
+    alias(libs.plugins.artifactory)
+}
+
 catalog {
     versionCatalog {
         from(files('libs.versions.toml'))
