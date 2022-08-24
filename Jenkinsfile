@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('Clone') {
             steps {
-                git branch: 'gradle-resolve', url: "https://github.com/yahavi/project-examples.git"
+                git url: "https://github.com/yahavi/jenkins-issue", branch: 'main'
             }
         }
 
@@ -16,23 +16,28 @@ pipeline {
                     repo: "libs-release-local"
                 )
 
-                rtGradleResolver (
-                    id: "GRADLE_RESOLVER",
-                    serverId: "ECOSYS",
-                    repo: "libs-release"
-                )
+                // rtGradleResolver (
+                //     id: "GRADLE_RESOLVER",
+                //     serverId: "ECOSYS",
+                //     repo: "libs-release"
+                // )
             }
         }
 
         stage ('Exec Gradle') {
             steps {
                 rtGradleRun (
-                    rootDir: "gradle-examples/gradle-example-ci-server/",
                     tasks: 'clean artifactoryPublish',
                     deployerId: "GRADLE_DEPLOYER",
-                    resolverId: "GRADLE_RESOLVER"
+                    useWrapper: true
+                    // resolverId: "GRADLE_RESOLVER"
                 )
             }
+        }
+    }
+    post {
+        always {
+            cleanWs()
         }
     }
 }
