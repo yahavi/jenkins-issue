@@ -30,7 +30,8 @@ pipeline {
                     tasks: 'clean artifactoryPublish',
                     deployerId: "GRADLE_DEPLOYER",
                     useWrapper: true,
-                    resolverId: "GRADLE_RESOLVER"
+                    resolverId: "GRADLE_RESOLVER",
+                    buildFile: "build.gradle"
                 )
             }
         }
