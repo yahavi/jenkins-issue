@@ -12,13 +12,13 @@ pipeline {
             steps {
                 rtGradleDeployer (
                     id: "GRADLE_DEPLOYER",
-                    serverId: "loren-7x",
+                    serverId: "ECOSYS",
                     repo: "libs-release-local"
                 )
 
                 rtGradleResolver (
                     id: "GRADLE_RESOLVER",
-                    serverId: "loren-7x",
+                    serverId: "ECOSYS",
                     repo: "libs-release"
                 )
             }
@@ -27,12 +27,10 @@ pipeline {
         stage ('Exec Gradle') {
             steps {
                 rtGradleRun (
-                    tool: "gradle",
                     tasks: 'clean artifactoryPublish',
                     deployerId: "GRADLE_DEPLOYER",
                     useWrapper: true,
                     resolverId: "GRADLE_RESOLVER",
-                    buildFile: "build.gradle"
                 )
             }
         }
